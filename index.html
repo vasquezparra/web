@@ -1,12 +1,96 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8">
-    <script src="script.js"></script>
-    <title>Adrian</title>
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-  </head>
-  <body>
-    <h1>Hello there!</h1>
-    <a href="/me.html">My other page</a>
-  </body>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/x-icon" href="http://vasquezparra.byethost16.com/favicon.ico">
+
+    
+    <title>VasquezParra</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+        * {
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: white;
+        }
+
+        .centrado {
+            text-align: center;
+        }
+
+        .video {
+            width: 100%;
+        }
+        .reloj {
+            width: 100%;
+            font-size: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centrado">
+        <img id="videolocal" class="video" src="http://192.168.0.111/video/mjpg.cgi" />
+        <img id="videoremoto" class="video" src="http://200.120.15.72:64736/video/mjpg.cgi" />
+       
+       <div id="reloj" class="reloj">00:00:00</div>
+       <a class="weatherwidget-io" href="https://forecast7.com/es/n35d42n71d65/talca/" data-label_1="TALCA"
+            data-font="Open Sans Condensed" data-theme="dark" data-basecolor="">TALCA</a>
+
+        <script>
+            !function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }
+                (document, 'script', 'weatherwidget-io-js');
+
+            function actual() {
+                fecha = new Date(); //Actualizar fecha.
+                hora = fecha.getHours(); //hora actual
+                minuto = fecha.getMinutes(); //minuto actual
+                segundo = fecha.getSeconds(); //segundo actual
+                if (hora < 10) { //dos cifras para la hora
+                    hora = "0" + hora;
+                }
+                if (minuto < 10) { //dos cifras para el minuto
+                    minuto = "0" + minuto;
+                }
+                if (segundo < 10) { //dos cifras para el segundo
+                    segundo = "0" + segundo;
+                }
+                //ver en el recuadro del reloj:
+                mireloj = hora + ":" + minuto + ":" + segundo;
+                return mireloj;
+            }
+            function actualizar() { //funci�n del temporizador
+                mihora = actual(); //recoger hora actual
+                mireloj = document.getElementById("reloj"); //buscar elemento reloj
+                mireloj.innerHTML = mihora; //incluir hora en elemento
+            }
+            setInterval(actualizar, 1000);
+
+            function reloadFrame() {
+                var f = document.getElementById('weatherwidget-io-0');
+                f.src = f.src;
+            }
+            setInterval(reloadFrame, 300000);
+
+
+
+        </script>
+
+
+</body>
+
 </html>
