@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/x-icon" href="http://vasquezparra.byethost16.com/favicon.ico">
+
     
     <title>VasquezParra</title>
     <style>
@@ -29,20 +32,22 @@
             width: 100%;
             font-size: 5em;
         }
+        #videoenvivo p {
+            display:none !important;
+        }
     </style>
 </head>
 
 <body>
     <div class="centrado">
-        <img id="videolocal" class="video" src="https://192.168.0.111/video/mjpg.cgi" />
-        <img id="videoremoto" class="video" src="https://200.120.15.72:64736/video/mjpg.cgi" />
+    <div>   
+            <div id="videoenvivo"><iframe width="400" height="300" src="https://rtsp.me/embed/4S7hGKkT/" frameborder="0" allowfullscreen></iframe><p align="right">powered by <a href="https://rtsp.me" title ="RTSP.ME - Free website RTSP video steaming service" target="_blank" >rtsp.me</a></p></div>
        
        <div id="reloj" class="reloj">00:00:00</div>
        <a class="weatherwidget-io" href="https://forecast7.com/es/n35d42n71d65/talca/" data-label_1="TALCA"
             data-font="Open Sans Condensed" data-theme="dark" data-basecolor="">TALCA</a>
 
         <script>
-            
             !function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (!d.getElementById(id)) {
@@ -83,6 +88,9 @@
                 f.src = f.src;
             }
             setInterval(reloadFrame, 300000);
+
+
+
         </script>
 
 
